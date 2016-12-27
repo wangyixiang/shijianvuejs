@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Latest Vue.js Commits</title>
+</head>
+<body>
+<p>
+    这里我使用了xhr和jquery来做了两种fetchData的方案, 就是多玩玩.
+</p>
+<div id="app">
+    <h1>Latest Vue.js Commits</h1>
+    <template v-for="getData in Object.keys(getDataMethods)">
+        <input type="radio" :id="getData" :value="getData" v-model="getDataMethod">
+        <label :for="getData">{{getData}}</label>
+    </template>
+    <p>
+        using: {{getDataMethod}}
+    </p>
+    <template v-for="branch in branches">
+        <input type="radio" :id="branch" :value="branch" v-model="currentBranch">
+        <label :for="branch">{{branch}}</label>
+    </template>
+    <p>vuejs/vue@{{currentBranch}}</p>
+    <ul>
+        <li v-for="commit in commits">
+        <a :href="commit.html_url">{{commit.sha}}</a>
+            - <span>{{commit.commit.message}}</span>
+        </li>
+    </ul>
+</div>
+<script src="../dist/client-bundle.js"></script>
+</body>
+</html>
