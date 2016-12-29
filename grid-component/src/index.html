@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>grid component</title>
+</head>
+<body>
+<div id="app">
+    <input v-model="searchQuery">
+    <table>
+        <thead>
+        <tr>
+        <th v-for="(colname, index) in colnames" v-on:click="sortOnThisCol(index)">{{colname}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="colrecord in colrecords">
+            <td v-for="celldata in colrecord">{{celldata | capitalize}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../dist/client-bundle.js"></script>
+</body>
+</html>
