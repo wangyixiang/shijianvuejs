@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Vue Routing Example</title>
+</head>
+<body>
+<script type="text/x-template" id="vue-select2">
+    <select v-model="selectedValue">
+        <slot></slot>
+        <option v-for="option in options" :value="option.value">
+            {{option.name}}
+        </option>
+    </select>
+</script>
+<div id="app">
+    <vue-select2 :options="optiondata">
+        <option disabled="disabled" value="0">select from below</option>
+    </vue-select2>
+</div>
+<script src="../dist/client-bundle.js"></script>
+</body>
+</html>
