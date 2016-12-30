@@ -6,19 +6,18 @@
 </head>
 <body>
 <div id="app">
+    <form>
     <input v-model="searchQuery">
-    <table>
-        <thead>
-        <tr>
-        <th v-for="(colname, index) in colnames" v-on:click="sortOnThisCol(index)">{{colname}}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="colrecord in colrecords">
-            <td v-for="celldata in colrecord">{{celldata | capitalize}}</td>
-        </tr>
-        </tbody>
-    </table>
+        <input type="checkbox" @click="" v-model="caseSensitive" id="caseSensitive">
+        <label for="caseSensitive">case Sensitive</label>
+    </form>
+    <my-grid
+            :data="gridData"
+            :col-names="dataColNames"
+            :filter-string="searchQuery"
+            :case-sensitive="caseSensitive"
+    >
+    </my-grid>
 </div>
 <script src="../dist/client-bundle.js"></script>
 </body>

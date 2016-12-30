@@ -21,7 +21,6 @@ export default {
             {
                 test: /\.vue$/,
                 loader: 'vue',
-                exclude: [/node_modules/],
             }
         ],
         resolve: {

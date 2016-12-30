@@ -8,6 +8,7 @@ import webpackConfig from './webpack.config.babel';
 
 const paths = {
     allSrcJs: 'src/**/*.js',
+    allSrcVue: 'src/**/*.vue',
     gulpFile: 'gulpfile.babel.js',
     clientEntry: 'src/index.js',
     clientBundle: 'client-bundle.js',
@@ -26,7 +27,7 @@ gulp.task('build', ['clean'], () =>
 );
 
 gulp.task('watch', ()=>
-    gulp.watch(paths.allSrcJs, ['build'])
+    gulp.watch([paths.allSrcJs, paths.allSrcVue], ['build'])
 
 );
 
