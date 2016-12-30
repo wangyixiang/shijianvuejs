@@ -6,7 +6,7 @@
 </head>
 <body>
 <script type="text/x-template" id="vue-select2">
-    <select v-model="selectedValue">
+    <select @input="log">
         <slot></slot>
         <option v-for="option in options" :value="option.value">
             {{option.name}}
@@ -14,8 +14,10 @@
     </select>
 </script>
 <div id="app">
-    <vue-select2 :options="optiondata">
-        <option disabled="disabled" value="0">select from below</option>
+    <input v-bind:value="selected" @input="valuechanged($event.target.value)">
+    selected: {{selected}}
+    <vue-select2 :options="optiondata"  @input="valuechanged">
+        <option disabled="disabled">select from below</option>
     </vue-select2>
 </div>
 <script src="../dist/client-bundle.js"></script>
