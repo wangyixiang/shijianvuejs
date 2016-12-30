@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>model Component</title>
+    <style>
+        .modal-mask {
+            position: fixed;
+            z-index: 9998;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            display: table;
+        }
+
+        .model-dialog {
+            position: relative;
+            border: dotted aqua thick;
+            width:25%;
+            margin: 0px auto;
+            padding: 20px 30px;
+        }
+
+        .vam {
+            vertical-align: middle;
+            display: table-cell;
+        }
+
+        .show-border {
+            border: solid rebeccapurple 2px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/x-template" id="model-template">
+    <div class="modal-mask">
+        <div class="vam">
+            <div class="model-dialog">
+                <div class="show-border">
+                    <slot name="modelheader">
+                        default header
+                    </slot>
+                </div>
+                <div class="show-border">
+                    <slot name="modelbody">
+                        default modelbody
+                    </slot>
+                </div>
+                <div class="show-border" style="float: right;">
+                    <slot name="modelfooter">
+                        <button @click="$emit('close')">ok</button>
+                    </slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<div id="app">
+    <p>model Component</p>
+    <button @click="showModel=true">show it</button>
+    <model v-if="showModel" @close="showModel=false">
+        <h1 slot="modelbody">a very long long long long long long long long long long long long long message.</h1>
+        <h3 slot="modelheader">my message is here</h3>
+    </model>
+</div>
+<script src="../dist/client-bundle.js"></script>
+</body>
+</html>
