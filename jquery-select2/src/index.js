@@ -4,6 +4,7 @@
 import Vue from 'vue';
 Vue.config.devtools = true;
 import $ from 'jquery';
+import select2 from 'select2';
 
 
 Vue.component('VueSelect2', {
@@ -14,6 +15,7 @@ Vue.component('VueSelect2', {
     ],
     mounted: function () {
         let self = this;
+        $(this.$el).select2();
         // 在VNode挂载到了Dom tree中后, jquery就可以登场了
         for (let option of this.options) {
             console.log(option);
